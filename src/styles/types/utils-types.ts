@@ -55,6 +55,7 @@ interface BoxProps extends gutterProps, colorProps, dimensionsProps, typographyP
     | 'space-around'
     | 'space-between'
     | 'space-evenly'
+  flexWrap?: boolean
   overflow?: Globals | 'hidden' | 'auto'
   borderRadius?: Globals | number | string
   inset?: Globals | string

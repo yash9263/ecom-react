@@ -1,3 +1,4 @@
+// @ts-ignore
 import { createGlobalStyle } from 'styled-components'
 import { COLORS, WEIGHTS } from './constants'
 
@@ -55,10 +56,30 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
-
+  
 :root {
   --color-black: hsl(${COLORS.black});
   --color-white: hsl(${COLORS.white});
+
+  /* gray colors */
+  ${Object.keys(COLORS.gray)
+    .map(
+      (shade) => `--color-gray-${shade}: hsl(${COLORS.gray[shade as unknown as keyof typeof COLORS.gray]});`,
+    )
+    .join('\n')}
+
+/* 
+  --color-gray-100: hsl(${COLORS.gray[100]})
+  --color-gray-150: hsl(${COLORS.gray[150]})
+  --color-gray-200: hsl(${COLORS.gray[200]})
+  --color-gray-300: hsl(${COLORS.gray[300]})
+  --color-gray-400: hsl(${COLORS.gray[400]})
+  --color-gray-500: hsl(${COLORS.gray[500]})
+  --color-gray-600: hsl(${COLORS.gray[600]})
+  --color-gray-700: hsl(${COLORS.gray[700]})
+  --color-gray-800: hsl(${COLORS.gray[800]})
+  --color-gray-900: hsl(${COLORS.gray[900]}) */
+
 
   --font-weight-bold: ${WEIGHTS.bold};
   --font-weight-medium: ${WEIGHTS.medium};
@@ -105,7 +126,12 @@ h4 {
   line-height: 1.5;
 }
 
-h5, h6 {
+h5  {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+h6 {
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -127,6 +153,10 @@ button {
 
 a {
   color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 `

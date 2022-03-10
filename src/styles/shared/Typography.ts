@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components'
-import { typographyStyles, colors, typography } from '../utils'
+import { typographyStyles, colors, typography, gutters } from './utils'
 
-import type { typographyProps, colorProps } from '../types/utils-types'
+import type { typographyProps, colorProps, gutterProps } from '../types/utils-types'
 
-interface typoProps extends typographyProps, colorProps {}
+interface typoProps extends typographyProps, colorProps, gutterProps {}
 
 const extendedProps = css<typographyProps | colorProps>`
   ${colors}
   ${typography}
+  ${gutters}
 `
 
 export const Heading1 = styled.h1<typoProps>`
@@ -41,6 +42,11 @@ export const Heading6 = styled.h6<typoProps>`
 `
 
 export const Text = styled.p<typoProps>`
-  ${typographyStyles.heading5}
+  ${typographyStyles.heading6}
+  ${extendedProps}
+`
+
+export const SmallText = styled.p<typoProps>`
+  ${typographyStyles.smallText}
   ${extendedProps}
 `

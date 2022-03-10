@@ -8,8 +8,8 @@ interface ImageContProps extends BoxProps {
   alt?: string
   loading?: 'eager' | 'lazy'
   aspectRatio?: Globals | number | string
-  width?: string
-  height?: string
+  width?: string | number
+  height?: string | number
   objectFit?: Globals | 'cover' | 'fill' | 'contain' | 'none' | 'scale-down'
 }
 
@@ -22,11 +22,11 @@ const Image = ({
   objectFit,
   width,
   height,
-  ...props
+  ...delegated
 }: ImageContProps) => {
   return (
-    <ImgWrapper className={className} aspectRatio={aspectRatio} objectFit={objectFit} {...props}>
-      <img src={src} alt={alt} loading={loading} width={width} height={height} />
+    <ImgWrapper className={className} aspectRatio={aspectRatio} objectFit={objectFit} {...delegated}>
+      <img className="si-img" src={src} alt={alt} loading={loading} width={width} height={height} />
     </ImgWrapper>
   )
 }
@@ -34,10 +34,11 @@ const Image = ({
 export const ImgWrapper = styled(Box)<{
   aspectRatio?: number | string
   objectFit?: Globals | 'cover' | 'fill' | 'contain' | 'none' | 'scale-down'
+  height?: string | number
 }>`
   img {
     width: 100%;
-    height: auto;
+    height: ${(p) => p.height || 'auto'};
     aspect-ratio: ${(p) => p.aspectRatio};
     object-fit: ${(p) => p.objectFit};
   }

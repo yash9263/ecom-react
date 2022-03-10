@@ -6,9 +6,9 @@ interface ButtonProps {
   className?: string
 }
 
-export default function Button({ children, className, ...props }: ButtonProps) {
+export default function Button({ children, className, ...delegated }: ButtonProps) {
   return (
-    <ButtonWrapper className={className} {...props}>
+    <ButtonWrapper className={className} {...delegated}>
       {children}
     </ButtonWrapper>
   )

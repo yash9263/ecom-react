@@ -1,6 +1,6 @@
-import Block from './Block'
-import Box from './Box'
-import Button from './Button'
-import Image from './Image'
-
-export { Box, Block, Button, Image }
+export { default as Block } from './Block'
+export { default as Box } from './Box'
+export { default as Button } from './Button'
+export { default as Image } from './Image'
+export * from './Typography'
+export * from './utils'

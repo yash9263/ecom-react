@@ -1,12 +1,12 @@
 import { css } from 'styled-components'
-import type { gutterProps, colorProps, dimensionsProps, typographyProps, Globals } from './types/utils-types'
+import type { gutterProps, colorProps, dimensionsProps, typographyProps, Globals } from '../types/utils-types'
 
-const resolvePixelVal = (gutter: Globals | number | string | undefined): string | undefined => {
+export const resolvePixelVal = (gutter: Globals | number | string | undefined): string | undefined => {
   if (!gutter) return
   return typeof gutter === 'number' ? gutter + 'px' : !isNaN(Number(gutter)) ? gutter + 'px' : gutter
 }
 
-const gutters = css<gutterProps>`
+export const gutters = css<gutterProps>`
   margin: ${(p) => resolvePixelVal(p.m)};
   padding: ${(p) => resolvePixelVal(p.p)};
   margin-top: ${(p) => resolvePixelVal(p.mT) || resolvePixelVal(p.mY)};
@@ -19,12 +19,12 @@ const gutters = css<gutterProps>`
   padding-right: ${(p) => resolvePixelVal(p.pR) || resolvePixelVal(p.pX)};
 `
 
-const colors = css<colorProps>`
+export const colors = css<colorProps>`
   background: ${(prop) => prop.bg || null};
   color: ${(prop) => prop.color || null};
 `
 
-const dimensions = css<dimensionsProps>`
+export const dimensions = css<dimensionsProps>`
   width: ${(p) => resolvePixelVal(p.width)};
   height: ${(p) => resolvePixelVal(p.height)};
   max-width: ${(p) => resolvePixelVal(p.maxW)};
@@ -33,8 +33,8 @@ const dimensions = css<dimensionsProps>`
   min-height: ${(p) => resolvePixelVal(p.minH)};
 `
 
-const typography = css<typographyProps>`
-  font-size: ${(p) => p.fontSize || null};
+export const typography = css<typographyProps>`
+  font-size: ${(p) => (p.fontSize ? `${p.fontSize}rem` : null)};
   line-height: ${(p) => p.lineHeight || null};
   font-weight: ${(p) =>
     p.fontWeight === 'bold'
@@ -45,17 +45,17 @@ const typography = css<typographyProps>`
   text-align: ${(p) => p.textAlign};
 `
 
-const typographyStyles = {
+export const typographyStyles = {
   heading1: css`
     font-size: 3.125rem;
     line-height: 1.33;
   `,
   heading2: css`
-    font-size: 2.375;
+    font-size: 2.375rem;
     line-height: 1.33;
   `,
   heading3: css`
-    font-size: 1.75;
+    font-size: 1.75rem;
     line-height: 1.33;
   `,
   heading4: css`
@@ -63,6 +63,10 @@ const typographyStyles = {
     line-height: 1.5;
   `,
   heading5: css`
+    font-size: 0.95rem;
+    line-height: 1.5;
+  `,
+  heading6: css`
     font-size: 0.875rem;
     line-height: 1.5;
   `,
@@ -70,48 +74,42 @@ const typographyStyles = {
     font-size: 1rem;
     line-height: 1.5;
   `,
-  smallText: css``,
-}
-
-const flexUtils = {
-  flexCenter: css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `,
-  flexColCenter: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  `,
-  flexCenterX: css`
-    display: flex;
-    justify-content: center;
-  `,
-  flexCenterY: css`
-    display: flex;
-    align-items: center;
-  `,
-  flexCol: css`
-    display: flex;
-    flex-direction: column;
+  smallText: css`
+    font-size: 0.9rem;
+    line-height: 1.5;
   `,
 }
 
-const pseudoDefault = css`
+export const flexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const flexColCenter = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+export const flexCenterX = css`
+  display: flex;
+  justify-content: center;
+`
+export const flexCenterY = css`
+  display: flex;
+  align-items: center;
+`
+export const flexCol = css`
+  display: flex;
+  flex-direction: column;
+`
+export const flexRow = css`
+  display: flex;
+  flex-direction: row;
+`
+
+export const pseudoDefault = css`
   content: '';
   position: absolute;
   display: block;
 `
-
-export {
-  resolvePixelVal,
-  gutters,
-  colors,
-  dimensions,
-  typography,
-  typographyStyles,
-  flexUtils,
-  pseudoDefault,
-}

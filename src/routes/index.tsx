@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Box } from '../styles/shared/Box'
+import { Box } from '../styles/shared'
 
 export default function IndexRoute() {
   return (
