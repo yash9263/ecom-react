@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-import Categories from '../route-containers/home/Categories'
-import { QUERIES } from '../styles/constants'
+import Categories from 'route-containers/home/Categories'
+import { QUERIES } from 'styles/constants'
 import { Box, Block, Image, Button } from '../styles/shared'
 import { v4 as uuid } from 'uuid'
-import ProductRow from '../components/ProductRow'
+import ProductRow from 'components/ProductRow'
 
 export default function IndexRoute() {
   return (
@@ -122,34 +122,42 @@ export const ContentBox = styled(Box)`
 const productArr = [
   {
     id: uuid(),
-    title: 'Hiking Jacket',
-    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1645121952/Camp/ecommerce/home/hiking_jacket.webp',
-    price: 1200.0,
-    discount: 60,
-    category: 'New Arrival',
+    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647592165/Camp/ecommerce/home/77a49585-0afa-485d-b8e2-5bddceee5c11_ccexpress_hr8buu.png',
+    title: "The North Face Ceptor Jacket - Men's",
+    price: 2847,
+    discount: 25,
+    category: 'men',
+    size: ['s', 'm', 'l', 'xl'],
+    rating: 4.3,
   },
   {
     id: uuid(),
-    price: 2010.0,
-    discount: 40,
-    category: 'Trending',
-    title: 'Hiking Bag 15 Litre NH100 - Blue',
-    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1645126116/Camp/ecommerce/home/bagpack1_zu78hu.webp',
+    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647593166/Camp/ecommerce/home/a14142485858m_ccexpress_aewsch.png',
+    title: 'The North Face Mens Recycled Gotham Jacket',
+    price: 6648,
+    discount: 30,
+    category: 'men',
+    size: ['s', 'm', 'l', 'xl'],
+    rating: 3.8,
   },
   {
     id: uuid(),
-    price: 2010.0,
-    discount: 40,
-    category: 'Trending',
-    title: 'Men’s Hiking Fleece Jacket - MH120',
-    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1645126228/Camp/ecommerce/home/hiking_flece_d9lh7g.webp',
+    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647593375/Camp/ecommerce/home/a14142743131n_ccexpress_k5xi2f.png',
+    title: 'Jack Wolfskin Mens White Forest Jacket',
+    price: 2184,
+    discount: 20,
+    category: 'men',
+    size: ['s', 'm', 'l', 'xl'],
+    rating: 4,
   },
   {
     id: uuid(),
-    price: 2010.0,
-    discount: 40,
-    category: 'Trending',
-    title: 'Trekking Backpack Trek 900 50+10 Litre - Light Grey',
-    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1645126153/Camp/ecommerce/home/rugsack1_gxdplc.webp',
+    img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647593530/Camp/ecommerce/home/1c4edc15-0d32-482b-a042-e9bf7aa0af17_ccexpress_vpkrga.png',
+    title: "Arc'teryx Micon Jacket - Men's",
+    price: 3253,
+    discount: 15,
+    category: 'men',
+    size: ['s', 'm', 'l', 'xl'],
+    rating: 4.7,
   },
 ]

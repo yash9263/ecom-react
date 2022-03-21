@@ -1,8 +1,8 @@
 import { Heart, ShoppingBag, User } from 'react-feather'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { QUERIES } from '../../styles/constants'
-import { Box, Block } from '../../styles/shared'
+import { QUERIES } from 'styles/constants'
+import { Box, Block } from 'styles/shared'
 import Logo from './Logo'
 
 export default function Header() {

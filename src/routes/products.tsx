@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import ProductCard from '../components/ProductCard'
+import ProductCard from 'components/ProductCard'
 import { useFilterContext } from '../context/product-page-context'
-import products from '../data/products'
-import { Category } from '../reducers/filters-reducer'
-import FilterSideBar from '../route-containers/products/Filters'
+import products from 'data/products'
+import type { Category, Rating, Sort } from 'reducers/filters-reducer'
+import FilterSideBar from 'route-containers/products/Filters'
 
 type Product = typeof products
 
@@ -12,17 +12,32 @@ const filterCategories = (products: Product, category: Category[]) => {
   return products.filter((product) => category.includes(product.category as Category))
 }
 
+const sortProducts = (products: Product, sortBy: Sort) => {
+  if (!sortBy) return products
+  if (sortBy === 'highToLow') return [...products].sort((a, b) => b.price - a.price)
+  else if (sortBy === 'lowToHigh') return [...products].sort((a, b) => a.price - b.price)
+  return products
+}
+
+const filterRating = (products: Product, rating: Rating) => {
+  if (!rating || typeof rating !== 'number') return products
+  return products.filter((product) => product.rating > Number(rating))
+}
+
 export default function ProductsRoute() {
   const { state } = useFilterContext()
 
-  const filteredProducts = filterCategories(products, state.category)
+  const filterCategory = filterCategories(products, state.category)
+  // Todo add size filter
+  const sortedProducts = sortProducts(filterCategory, state.sortBy)
+  const filterProductRating = filterRating(sortedProducts, state.rating)
 
   return (
     <Wrapper>
       <FilterSideBar />
       <Products>
-        {filteredProducts &&
-          filteredProducts.map((product) => (
+        {filterProductRating &&
+          filterProductRating.map((product) => (
             <ProductCard
               minW={240}
               key={product.id}
@@ -32,6 +47,7 @@ export default function ProductsRoute() {
               price={product.price}
               category={product.category}
               discount={product.discount}
+              rating={product.rating}
             />
           ))}
       </Products>

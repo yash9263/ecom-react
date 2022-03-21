@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Link } from 'react-router-dom'
-import { Block, Box, flexCenterX, flexCol, Heading4 } from '../../styles/shared'
+import { Block, Box, flexCenterX, flexCol, Heading4 } from 'styles/shared'
 import { shopLinks, helpLinks, socials } from './footerLinks'
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
         <Heading4 pB={16}>Shop</Heading4>
         <UL>
           {shopLinks.map(({ path, title }) => (
-            <li key={path}>
+            <li key={title}>
               <Link to={path}>{title}</Link>
             </li>
           ))}
@@ -21,15 +21,15 @@ export default function Footer() {
         <Heading4 pB={16}>Help</Heading4>
         <UL>
           {helpLinks.map(({ path, title }) => (
-            <li key={path}>
+            <li key={title}>
               <Link to={path}>{title}</Link>
             </li>
           ))}
         </UL>
       </Box>
       <SocialLinks>
-        {socials.map(({ path, icon }) => (
-          <Link key={path} to={path}>
+        {socials.map(({ path, icon, title }) => (
+          <Link key={title} to={path}>
             {icon}
           </Link>
         ))}

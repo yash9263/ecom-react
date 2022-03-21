@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from 'react'
-import filterReducer, { initialState } from '../reducers/filters-reducer'
+import filterReducer, { initialState } from 'reducers/filters-reducer'
 
 import type { Dispatch, ReactNode, Reducer } from 'react'
-import type { Action, State } from '../reducers/filters-reducer'
+import type { Action, State } from 'reducers/filters-reducer'
 
 interface ProductPageContextInterface {
   state: typeof initialState

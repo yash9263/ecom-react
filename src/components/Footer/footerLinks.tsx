@@ -18,13 +18,16 @@ export const socials = [
   {
     path: 'https://twitter.com/yashwant0098',
     icon: <Twitter />,
+    title: 'twitter',
   },
   {
     path: 'https://www.instagram.com/yashwant0098/',
     icon: <Instagram />,
+    title: 'instagram',
   },
   {
     path: 'https://github.com/yash9263',
     icon: <GitHub />,
+    title: 'github',
   },
 ]

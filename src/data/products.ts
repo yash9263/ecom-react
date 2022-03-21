@@ -1,4 +1,11 @@
 import { v4 as uuid } from 'uuid'
+const generateRating = () => {
+  const max = 5
+  const min = 1
+  const randomInt = Math.round((Math.random() * (max - min + 1) + min) * 10) / 10
+  return randomInt > 5 ? 5 : randomInt
+}
+
 export default [
   // Men
   {
@@ -9,6 +16,7 @@ export default [
     discount: 25,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -18,6 +26,7 @@ export default [
     discount: 30,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -27,6 +36,7 @@ export default [
     discount: 20,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -36,6 +46,7 @@ export default [
     discount: 15,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -45,6 +56,7 @@ export default [
     discount: 25,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -54,6 +66,7 @@ export default [
     discount: 25,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -63,6 +76,7 @@ export default [
     discount: 25,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -72,6 +86,7 @@ export default [
     discount: 30,
     category: 'men',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   // Women
   {
@@ -82,6 +97,7 @@ export default [
     discount: 20,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -91,6 +107,7 @@ export default [
     discount: 10,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -100,6 +117,7 @@ export default [
     discount: 10,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -109,6 +127,7 @@ export default [
     discount: 10,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -118,6 +137,7 @@ export default [
     discount: 10,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -127,6 +147,7 @@ export default [
     discount: 20,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -136,6 +157,7 @@ export default [
     discount: 25,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -145,6 +167,7 @@ export default [
     discount: 40,
     category: 'women',
     size: ['s', 'm', 'l', 'xl'],
+    rating: generateRating(),
   },
   // accessories
   {
@@ -154,6 +177,7 @@ export default [
     price: 6203,
     discount: 30,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -162,6 +186,7 @@ export default [
     price: 9972,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -170,6 +195,7 @@ export default [
     price: 6932,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -178,6 +204,7 @@ export default [
     price: 5638,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -186,6 +213,7 @@ export default [
     price: 186,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -194,6 +222,7 @@ export default [
     price: 8923,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -202,6 +231,7 @@ export default [
     price: 5879,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -210,6 +240,7 @@ export default [
     price: 1307,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -218,6 +249,7 @@ export default [
     price: 421,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -226,6 +258,7 @@ export default [
     price: 4256,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -234,6 +267,7 @@ export default [
     price: 9517,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -242,6 +276,7 @@ export default [
     price: 2904,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
   {
     id: uuid(),
@@ -250,6 +285,7 @@ export default [
     price: 3007,
     discount: 20,
     category: 'accessories',
+    rating: generateRating(),
   },
 ]
 // {

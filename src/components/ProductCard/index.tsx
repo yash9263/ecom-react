@@ -1,7 +1,7 @@
 import { Heart } from 'react-feather'
 import styled from 'styled-components'
-import { Box, Text, Image, Heading5, SmallText, Button } from '../../styles/shared'
-import type { BoxProps } from '../../styles/types/utils-types'
+import { Box, Text, Image, Heading5, SmallText, Button } from 'styles/shared'
+import type { BoxProps } from 'styles/types/utils-types'
 
 interface ProductProps extends BoxProps {
   id: number | string
@@ -9,6 +9,8 @@ interface ProductProps extends BoxProps {
   img: string
   price: number
   discount: number
+  size?: string[]
+  rating: number
   category: string
   className?: string
 }
@@ -21,6 +23,7 @@ const ProductCard = ({
   discount,
   category,
   className,
+  rating,
   ...delegated
 }: ProductProps) => {
   return (
@@ -33,9 +36,7 @@ const ProductCard = ({
       </ImageWrapper>
       <Box pL={8} pT={8}>
         <a>
-          <Heading5 as="a" fontWeight="bold">
-            {title}
-          </Heading5>
+          <Heading5 fontWeight="bold">{title}</Heading5>
         </a>
         <Box display="flex" gap={12}>
           <Text fontWeight="medium">Rs. {price}.00</Text>
@@ -45,7 +46,7 @@ const ProductCard = ({
         </Box>
         <Text>({discount}% OFF)</Text>
         <SmallText fontWeight="medium" color="var(--color-gray-700)">
-          {category}
+          {category} {rating} stars
         </SmallText>
       </Box>
     </ProductCardWrapper>

@@ -1,10 +1,10 @@
-import { Box, Heading3 } from '../../styles/shared'
+import { Box, Heading3 } from 'styles/shared'
 import ProductCard from '../ProductCard'
-import type { productProp } from '../../types'
+import type { ProductProp } from 'types'
 
 interface ProductRowProps {
   title: string
-  products: productProp[]
+  products: ProductProp[]
 }
 
 const ProductRow = ({ title, products }: ProductRowProps) => {
