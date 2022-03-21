@@ -24,7 +24,7 @@ const categories = [
   },
 ]
 
-export const Categories = () => {
+const Categories = () => {
   return (
     <Wrapper>
       <h2>Top Categories</h2>
@@ -77,3 +77,5 @@ export const StyledLink = styled(Link)`
     transform-origin: bottom left;
   }
 `
+
+export default Categories

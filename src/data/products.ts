@@ -7,7 +7,7 @@ export default [
     title: "The North Face Ceptor Jacket - Men's",
     price: 2847,
     discount: 25,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -16,7 +16,7 @@ export default [
     title: 'The North Face Mens Recycled Gotham Jacket',
     price: 6648,
     discount: 30,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -25,7 +25,7 @@ export default [
     title: 'Jack Wolfskin Mens White Forest Jacket',
     price: 2184,
     discount: 20,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -34,7 +34,7 @@ export default [
     title: "Arc'teryx Micon Jacket - Men's",
     price: 3253,
     discount: 15,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -43,7 +43,7 @@ export default [
     title: 'Helly Hansen Mens Alpha Lifaloft Pant',
     price: 9794,
     discount: 25,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -52,7 +52,7 @@ export default [
     title: 'Patagonia Mens Snowshot Pants',
     price: 2943,
     discount: 25,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -61,7 +61,7 @@ export default [
     title: "Arc'teryx Mens Atom LT Vest",
     price: 2181,
     discount: 25,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -70,7 +70,7 @@ export default [
     title: 'Jack Wolfskin Mens West Coast Jacket',
     price: 2562,
     discount: 30,
-    category: 'Men',
+    category: 'men',
     size: ['s', 'm', 'l', 'xl'],
   },
   // Women
@@ -79,8 +79,8 @@ export default [
     img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647596621/Camp/ecommerce/home/16366581-3424-43c9-8cf6-62c5e6945475_ccexpress_gffcmn.png',
     title: "Burton GTX Pillowline Insulated Jacket - Women's",
     price: 1311,
-    discount: 10,
-    category: 'Women',
+    discount: 20,
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -89,7 +89,7 @@ export default [
     title: 'Poivre Blanc Womens Danielle Faux Fur Jacket',
     price: 4059,
     discount: 10,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -98,7 +98,7 @@ export default [
     title: 'Roxy Womens Snowblizzard Jacket',
     price: 3602,
     discount: 10,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -107,7 +107,7 @@ export default [
     title: 'Columbia Womens Bindo II Insulated Jacket',
     price: 4005,
     discount: 10,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -116,7 +116,7 @@ export default [
     title: 'Henri Duvillard Womens Droites Jacket',
     price: 2653,
     discount: 10,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -125,7 +125,7 @@ export default [
     title: 'Helly Hansen Womens Imperial Puffy Jacket',
     price: 5828,
     discount: 20,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -134,7 +134,7 @@ export default [
     title: 'Picture Womens Farmer Jacket',
     price: 6441,
     discount: 25,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
   {
@@ -143,17 +143,17 @@ export default [
     title: 'Rossignol Womens Tommy Hilfiger Ski Down Jacket',
     price: 2904,
     discount: 40,
-    category: 'Women',
+    category: 'women',
     size: ['s', 'm', 'l', 'xl'],
   },
-  // accessorie
+  // accessories
   {
     id: uuid(),
     img: 'https://res.cloudinary.com/yashwant9263/image/upload/v1647599378/Camp/ecommerce/home/j13242360202s_ccexpress_v2ezkk.png',
     title: "Rossignol Men's React R6 Compact Skis With Xpress 11 GW Binding",
     price: 6203,
-    discount: 20,
-    category: 'Accessories',
+    discount: 30,
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -161,7 +161,7 @@ export default [
     title: 'Atomic Mens Maverick 88 TI Skis (Ski Only)',
     price: 9972,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -169,7 +169,7 @@ export default [
     title: 'Rossignol Womens Experience 82 Basalt Skis With Xpress 11 GW Bindings',
     price: 6932,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -177,7 +177,7 @@ export default [
     title: 'Rossignol Mens Black Ops Sender Skis (Ski Only)',
     price: 5638,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -185,7 +185,7 @@ export default [
     title: "Bolle Women's Sierra Goggle",
     price: 186,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -193,7 +193,7 @@ export default [
     title: 'Atomic Mens Hawx Ultra 110 S GW Ski Boot',
     price: 8923,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -201,7 +201,7 @@ export default [
     title: 'Salomon Womens S/Max 90 GW Ski Boots',
     price: 5879,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -209,7 +209,7 @@ export default [
     title: 'Marker F10 Tour Alpine Touring Bindings',
     price: 1307,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -217,7 +217,7 @@ export default [
     title: 'Rossignol FT 500 Cross-Country Ski Poles',
     price: 421,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -225,7 +225,7 @@ export default [
     title: 'Burton Mens Process PurePop Snowboard',
     price: 4256,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -233,7 +233,7 @@ export default [
     title: 'Capita Mens Mercury Snowboard',
     price: 9517,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -241,7 +241,7 @@ export default [
     title: 'Burton Mens Custom Flying V Snowboard',
     price: 2904,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
   {
     id: uuid(),
@@ -249,7 +249,7 @@ export default [
     title: 'Burton Mens Family Tree Show Stopper Snowboard',
     price: 3007,
     discount: 20,
-    category: 'Accessories',
+    category: 'accessories',
   },
 ]
 // {
@@ -258,5 +258,5 @@ export default [
 //   title: '',
 //   price: 2904,
 //   discount: 20,
-//   category: 'Accessories',
+//   category: 'accessories',
 // },

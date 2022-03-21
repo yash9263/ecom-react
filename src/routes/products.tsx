@@ -1,16 +1,28 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ProductCard from '../components/ProductCard'
+import { useFilterContext } from '../context/product-page-context'
 import products from '../data/products'
+import { Category } from '../reducers/filters-reducer'
+import FilterSideBar from '../route-containers/products/Filters'
+
+type Product = typeof products
+
+const filterCategories = (products: Product, category: Category[]) => {
+  if (category.length < 1) return products
+  return products.filter((product) => category.includes(product.category as Category))
+}
 
 export default function ProductsRoute() {
+  const { state } = useFilterContext()
+
+  const filteredProducts = filterCategories(products, state.category)
+
   return (
-    <div>
-      products
-      <Link to="/">Home</Link>
+    <Wrapper>
+      <FilterSideBar />
       <Products>
-        {products &&
-          products.map((product) => (
+        {filteredProducts &&
+          filteredProducts.map((product) => (
             <ProductCard
               minW={240}
               key={product.id}
@@ -23,9 +35,15 @@ export default function ProductsRoute() {
             />
           ))}
       </Products>
-    </div>
+    </Wrapper>
   )
 }
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+`
 
 export const Products = styled.div`
   display: flex;

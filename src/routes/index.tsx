@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Categories } from '../route-containers/Home'
+import Categories from '../route-containers/home/Categories'
 import { QUERIES } from '../styles/constants'
 import { Box, Block, Image, Button } from '../styles/shared'
 import { v4 as uuid } from 'uuid'
@@ -44,7 +44,6 @@ export default function IndexRoute() {
           <button>shop now</button>
         </ContentBox>
       </CoverImage>
-      {/* TODO: Add 1 row  for products and 1 more cover image*/}
       <Block maxW={1110}>
         <ProductRow title="New Arrivals" products={productArr} />
       </Block>
