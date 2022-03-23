@@ -4,6 +4,7 @@ import Home from './routes'
 import ProductsRoute from './routes/products'
 import ErrorBoundary from './route-containers/error-boundaries/ErrorBoudary'
 import ProductPageContextProvider from './context/product-page-context'
+import { MockmanRoute } from 'routes/mockman'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             </ProductPageContextProvider>
           }
         />
+        <Route path="/mockman" element={<MockmanRoute />} />
+
         {/* Error Boundary for not available pages */}
         <Route path="*" element={<ErrorBoundary />} />
       </Route>
