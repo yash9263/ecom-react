@@ -1,8 +1,10 @@
-export interface productProp {
+export type ProductProp = {
   id: string
-  title: string
   img: string
+  title: string
   price: number
   discount: number
   category: string
+  size: string[]
+  rating: number
 }
