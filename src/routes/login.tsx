@@ -2,8 +2,9 @@ import type { FormEvent } from 'react'
 
 import { useAuth } from 'context/auth-context'
 import useForm from 'hooks/useForm'
+import { Link, Navigate } from 'react-router-dom'
 
-type HandleSubmit = (e: FormEvent<HTMLFormElement> | FormEvent<HTMLButtonElement> | undefined) => void
+export type HandleSubmit = (e: FormEvent<HTMLFormElement> | FormEvent<HTMLButtonElement> | undefined) => void
 
 const initialValues = {
   email: '',
@@ -18,12 +19,14 @@ const LoginRoute = () => {
     if (!e) return
     e.preventDefault()
     // TODO handle form validation
-
-    await auth.login({ ...formValues })
+    if (auth) {
+      await auth.login({ ...formValues })
+    }
   }
 
   return (
     <div>
+      {auth?.user && <Navigate to="/" replace={true} />}
       <form action="" method="post" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="login-email">email</label>
@@ -52,6 +55,7 @@ const LoginRoute = () => {
           login
         </button>
       </form>
+      <Link to="/signup">Don&apos;t have a account</Link>
     </div>
   )
 }

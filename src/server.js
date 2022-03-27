@@ -1,5 +1,5 @@
 import { Server, Model, RestSerializer } from 'miragejs'
-import { loginHandler, signupHandler } from './backend/controllers/AuthController'
+import { loginHandler, signupHandler, userHandler } from './backend/controllers/AuthController'
 import {
   addItemToCartHandler,
   getCartItemsHandler,
@@ -50,6 +50,7 @@ export function makeServer({ environment = 'development' } = {}) {
       this.namespace = 'api'
 
       // auth routes (public)
+      this.get('/auth/user', userHandler.bind(this))
       this.post('/auth/signup', signupHandler.bind(this))
       this.post('/auth/login', loginHandler.bind(this))
 
