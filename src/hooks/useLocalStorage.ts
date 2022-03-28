@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // reference: https://usehooks.com/useLocalStorage
-const useLocalStorage = <T>(key: string) => {
+const useLocalStorage = <T>(key: string): [localValue: T, setStoredValue: (value: T) => void] => {
   const [localValue, setLocalValue] = useState<T>(() => {
     // to handle server side rendering, as window object is not present on server
     if (typeof window === 'undefined') return
@@ -15,7 +15,7 @@ const useLocalStorage = <T>(key: string) => {
     window.localStorage.setItem(key, JSON.stringify(value))
   }
 
-  return [localValue, setStoredValue] as const
+  return [localValue, setStoredValue]
 }
 
 export default useLocalStorage

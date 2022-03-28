@@ -1,5 +1,7 @@
 import useForm from 'hooks/useForm'
 import { useAuth } from 'context/auth-context'
+import type { HandleSubmit } from './login'
+
 const initialValues = {
   firstName: '',
   lastName: '',
@@ -10,15 +12,15 @@ const initialValues = {
 const SignUpRoute = () => {
   const [formValues, handleChange] = useForm(initialValues)
 
-  console.log(formValues)
   const auth = useAuth()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit: HandleSubmit = async (e) => {
     if (!e) return
     e.preventDefault()
     // TODO handle form validation
-
-    await auth.signUp({ ...formValues })
+    if (auth) {
+      await auth.signUp({ ...formValues })
+    }
   }
   return (
     <div>
@@ -31,6 +33,7 @@ const SignUpRoute = () => {
             id="signup-firstName"
             onChange={handleChange}
             value={formValues.firstName}
+            required
           />
         </div>
         <div>

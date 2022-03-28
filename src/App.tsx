@@ -7,6 +7,9 @@ import ProductPageContextProvider from './context/product-page-context'
 import { MockmanRoute } from 'routes/mockman'
 import LoginRoute from 'routes/login'
 import SignUpRoute from 'routes/signup'
+import CartRoute from 'routes/cart'
+import WishlistRoute from 'routes/wishlist'
+import RequireAuth from 'components/RequireAuth'
 
 function App() {
   return (
@@ -25,6 +28,10 @@ function App() {
         <Route path="/login" element={<LoginRoute />} />
         <Route path="/signup" element={<SignUpRoute />} />
 
+        <Route element={<RequireAuth />}>
+          <Route path="/cart" element={<CartRoute />} />
+          <Route path="/wishlist" element={<WishlistRoute />} />
+        </Route>
         {/* Error Boundary for not available pages */}
         <Route path="*" element={<ErrorBoundary />} />
       </Route>

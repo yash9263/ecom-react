@@ -1,5 +1,6 @@
-import { Heart } from 'react-feather'
-import styled from 'styled-components'
+import { useState } from 'react'
+import { Heart as WishList, ShoppingBag } from 'react-feather'
+import styled, { keyframes } from 'styled-components'
 import { Box, Text, Image, Heading5, SmallText, Button } from 'styles/shared'
 import type { BoxProps } from 'styles/types/utils-types'
 
@@ -26,13 +27,39 @@ const ProductCard = ({
   rating,
   ...delegated
 }: ProductProps) => {
+  const [show, setShow] = useState(false)
+
+  const addToCart = () => {
+    console.log('add to cart')
+  }
+  const addToWishlist = () => {
+    console.log('add to wishlist')
+  }
+
   return (
-    <ProductCardWrapper key={id} className={className} as="article" maxW={280} m={4} {...delegated}>
+    <ProductCardWrapper
+      key={id}
+      className={className}
+      as="article"
+      maxW={280}
+      m={4}
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+      {...delegated}
+    >
       <ImageWrapper>
         <Image height="240" src={img} aspectRatio={0.9} alt="product image" objectFit="cover" />
-        <WishlistBtn>
-          <Heart />
-        </WishlistBtn>
+        {show && (
+          <ActionBox>
+            <ActionBtn onClick={addToWishlist}>
+              <WishList />
+            </ActionBtn>
+            <Seperator />
+            <ActionBtn onClick={addToCart}>
+              <ShoppingBag />
+            </ActionBtn>
+          </ActionBox>
+        )}
       </ImageWrapper>
       <Box pL={8} pT={8}>
         <a>
@@ -61,12 +88,6 @@ export const ProductCardWrapper = styled(Box)`
 export const ImageWrapper = styled(Box)`
   overflow: hidden;
   position: relative;
-  .si-img {
-    transition: transform 300ms ease-in;
-  }
-  .si-img:hover {
-    transform: scale(1.1);
-  }
 `
 
 export const WishlistBtn = styled(Button)`
@@ -82,5 +103,35 @@ export const WishlistBtn = styled(Button)`
     */
   }
 `
+
+export const ActionBtn = styled(Button)`
+  border-radius: initial;
+  & > svg {
+  }
+`
+
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+export const ActionBox = styled.div`
+  position: absolute;
+  animation: ${fadeIn} 300ms ease-in;
+  height: 40px;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* add box shadow */
+`
+
+export const Seperator = styled.div``
 
 export default ProductCard

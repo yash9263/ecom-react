@@ -4,6 +4,7 @@ import styled from 'styled-components'
 interface ButtonProps {
   children: ReactNode
   className?: string
+  onClick?: () => void
 }
 
 export default function Button({ children, className, ...delegated }: ButtonProps) {

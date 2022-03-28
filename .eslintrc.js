@@ -37,7 +37,7 @@ module.exports = {
         props: false,
       },
     ],
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'comma-dangle': [2, 'always-multiline'],
     'no-multiple-empty-lines': [2, { max: 1 }],
     quotes: [

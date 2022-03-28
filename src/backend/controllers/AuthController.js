@@ -1,6 +1,8 @@
 import { v4 as uuid } from 'uuid'
 import { Response } from 'miragejs'
 import { formatDate } from '../utils/authUtils'
+import { requiresAuth } from '../utils/authUtils'
+
 const sign = require('jwt-encode')
 /**
  * All the routes related to Auth are present here.
@@ -86,4 +88,11 @@ export const loginHandler = function (schema, request) {
       },
     )
   }
+}
+
+export const userHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request)
+  const user = schema.users.findBy({ _id: userId })
+
+  return new Response(200, {}, { user })
 }
