@@ -1,39 +1,49 @@
+import { useAuth } from 'context/auth-context'
 import { useState } from 'react'
 import { Heart as WishList, ShoppingBag } from 'react-feather'
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Box, Text, Image, Heading5, SmallText, Button } from 'styles/shared'
 import type { BoxProps } from 'styles/types/utils-types'
+import { ProductProp } from 'types'
 
 interface ProductProps extends BoxProps {
-  id: number | string
-  title: string
-  img: string
-  price: number
-  discount: number
-  size?: string[]
-  rating: number
-  category: string
+  product: ProductProp
   className?: string
 }
 
-const ProductCard = ({
-  id,
-  img,
-  title,
-  price,
-  discount,
-  category,
-  className,
-  rating,
-  ...delegated
-}: ProductProps) => {
+const ProductCard = ({ product, className, ...delegated }: ProductProps) => {
+  const { id, img, title, price, discount, category, rating } = product
   const [show, setShow] = useState(false)
+  const { user, addToCart, addToWishlist, removeFormWishlist, removeFromCart } = useAuth()
 
-  const addToCart = () => {
-    console.log('add to cart')
+  const inCart = user && user.cart.some((item) => item.id === product.id)
+
+  const inWishlist = user && user.wishlist.some((item) => item.id === product.id)
+
+  const handleCart = (product) => {
+    if (!user) {
+      // todo add toast
+      console.log('please login')
+      return
+    }
+    if (inCart) {
+      removeFromCart(product)
+    } else {
+      addToCart(product)
+    }
   }
-  const addToWishlist = () => {
-    console.log('add to wishlist')
+
+  const handleWishlist = (product) => {
+    if (!user) {
+      // todo add toast
+      console.log('please login')
+      return
+    }
+    if (inWishlist) {
+      removeFormWishlist(product)
+    } else {
+      addToWishlist(product)
+    }
   }
 
   return (
@@ -51,12 +61,12 @@ const ProductCard = ({
         <Image height="240" src={img} aspectRatio={0.9} alt="product image" objectFit="cover" />
         {show && (
           <ActionBox>
-            <ActionBtn onClick={addToWishlist}>
-              <WishList />
+            <ActionBtn onClick={() => handleWishlist(product)}>
+              <WishlistIcon inwishlist={inWishlist ? inWishlist : undefined} />
             </ActionBtn>
             <Seperator />
-            <ActionBtn onClick={addToCart}>
-              <ShoppingBag />
+            <ActionBtn onClick={() => handleCart(product)}>
+              <CartIcon incart={inCart ? inCart : undefined} />
             </ActionBtn>
           </ActionBox>
         )}
@@ -90,25 +100,26 @@ export const ImageWrapper = styled(Box)`
   position: relative;
 `
 
-export const WishlistBtn = styled(Button)`
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: transparent;
-  & > svg {
-    /* 
-      TODO: add condition for wishlist color
-      color: hsl(0, 100%, 50%);
-      fill: hsl(0, 100%, 50%); 
-    */
-  }
-`
-
 export const ActionBtn = styled(Button)`
   border-radius: initial;
   & > svg {
   }
 `
+
+export const WishlistIcon = styled(WishList)(({ inwishlist }: { inwishlist: boolean }) => [
+  inwishlist &&
+    css`
+      color: hsla(0, 100%, 50%);
+      fill: hsl(0, 100%, 50%);
+    `,
+])
+
+export const CartIcon = styled(ShoppingBag)(({ incart }: { incart: boolean }) => [
+  incart &&
+    css`
+      fill: var(--color-gray-500);
+    `,
+])
 
 export const fadeIn = keyframes`
   0% {

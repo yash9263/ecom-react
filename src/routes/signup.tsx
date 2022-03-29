@@ -18,9 +18,7 @@ const SignUpRoute = () => {
     if (!e) return
     e.preventDefault()
     // TODO handle form validation
-    if (auth) {
-      await auth.signUp({ ...formValues })
-    }
+    await auth.signUp({ ...formValues })
   }
   return (
     <div>

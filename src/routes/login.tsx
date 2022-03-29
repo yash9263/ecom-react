@@ -19,9 +19,7 @@ const LoginRoute = () => {
     if (!e) return
     e.preventDefault()
     // TODO handle form validation
-    if (auth) {
-      await auth.login({ ...formValues })
-    }
+    await auth.login({ ...formValues })
   }
 
   return (

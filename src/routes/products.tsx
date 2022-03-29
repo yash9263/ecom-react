@@ -37,19 +37,7 @@ export default function ProductsRoute() {
       <FilterSideBar />
       <Products>
         {filterProductRating &&
-          filterProductRating.map((product) => (
-            <ProductCard
-              minW={240}
-              key={product.id}
-              id={product.id}
-              img={product.img}
-              title={product.title}
-              price={product.price}
-              category={product.category}
-              discount={product.discount}
-              rating={product.rating}
-            />
-          ))}
+          filterProductRating.map((product) => <ProductCard minW={240} key={product.id} product={product} />)}
       </Products>
     </Wrapper>
   )
