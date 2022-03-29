@@ -5,6 +5,7 @@ export type ProductProp = {
   price: number
   discount: number
   category: string
-  size: string[]
+  size?: string[]
   rating: number
+  qty?: number
 }

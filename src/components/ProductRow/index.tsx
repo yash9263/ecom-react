@@ -14,7 +14,7 @@ const ProductRow = ({ title, products }: ProductRowProps) => {
         {title}
       </Heading3>
       <Box display="flex">
-        {products && products.map((product) => <ProductCard key={product.id} {...product} />)}
+        {products && products.map((product) => <ProductCard key={product.id} product={product} />)}
       </Box>
     </Box>
   )

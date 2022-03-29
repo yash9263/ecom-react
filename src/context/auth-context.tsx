@@ -2,13 +2,8 @@ import axios from 'axios'
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import useLocalStorage from 'hooks/useLocalStorage'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-type AuthProvider = {
-  user: unknown
-  login: (data: any) => Promise<void>
-  signUp: (data: any) => Promise<void>
-  logOut: () => Promise<void>
-}
+import { ProductProp } from 'types'
+import { formatDate } from 'utils'
 
 type LoginData = {
   email: string
@@ -22,6 +17,24 @@ type SignUpData = {
   lastName: string
 }
 
+type UserAction = (item: ProductProp) => Promise<void>
+
+type AuthProvider = {
+  user: unknown
+  login: (data: LoginData) => Promise<void>
+  signUp: (data: SignUpData) => Promise<void>
+  logOut: () => Promise<void>
+  getCart: () => Promise<void>
+  addToCart: UserAction
+  removeFromCart: UserAction
+  addToWishlist: UserAction
+  removeFormWishlist: UserAction
+  moveToCart: UserAction
+  getWishlist: () => Promise<void>
+  moveToWishlist: UserAction
+  updateItemCount: (item: ProductProp, type: 'increment' | 'decrement') => Promise<void>
+}
+
 const AuthContext = createContext<AuthProvider | undefined>(undefined)
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -31,8 +44,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 }
 
 const useAuthProvider = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [user, setUser] = useState<unknown | null | undefined>(null)
-  const [token, setStoredValue] = useLocalStorage<{ encodedToken: string; userInfo: object }>('user_token')
+  const [token, setStoredValue] = useLocalStorage<{
+    encodedToken: string
+    userInfo: any
+  }>('user_token')
   const navigate = useNavigate()
   const { state }: { state: any } = useLocation()
 
@@ -84,9 +101,212 @@ const useAuthProvider = () => {
     setUser(undefined)
     if (typeof window !== 'undefined') window.localStorage.removeItem('user_token')
   }
-  return { user, login, signUp, logOut }
+
+  const getCart = async () => {
+    try {
+      // const res = await axios({
+      //   method: 'get',
+      //   url: '/api/user/cart',
+      //   headers: { authorization: token.encodedToken },
+      // })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const addToCart: UserAction = async (item) => {
+    try {
+      // const res = await axios({
+      //   method: 'post',
+      //   url: '/api/user/cart',
+      //   headers: { authorization: token.encodedToken },
+      //   data: {
+      //     product: item,
+      //   },
+      // })
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          cart: [
+            ...token.userInfo.cart,
+            {
+              ...item,
+              createdAt: formatDate(),
+              updatedAt: formatDate(),
+              qty: 1,
+            },
+          ],
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const removeFromCart: UserAction = async (item: ProductProp) => {
+    try {
+      //   const res = await axios({
+      //     method: 'delete',
+      //     url: `/api/user/cart/${item.id}`,
+      //     headers: { authorization: token.encodedToken },
+      //   })
+
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          cart: token.userInfo.cart.filter((product) => product.id !== item.id),
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const updateItemCount = async (item: ProductProp, type: 'increment' | 'decrement') => {
+    try {
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          cart: token.userInfo.cart.map((product) =>
+            product.id !== item.id
+              ? product
+              : {
+                  ...product,
+                  qty:
+                    type === 'increment' ? product.qty + 1 : product.qty > 1 ? product.qty - 1 : product.qty,
+                },
+          ),
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const getWishlist = async () => {
+    try {
+      // const res = await axios({
+      //   method: 'get',
+      //   url: '/api/user/wishlist',
+      //   headers: { authorization: token.encodedToken },
+      // })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const addToWishlist: UserAction = async (item) => {
+    try {
+      // const res = await axios({
+      //   method: 'post',
+      //   url: 'api/user/wishlist',
+      //   headers: { authorization: token.encodedToken },
+      //   data: {
+      //     product: item,
+      //   },
+      // })
+
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          wishlist: [
+            ...token.userInfo.wishlist,
+            {
+              ...item,
+              createdAt: formatDate(),
+              updatedAt: formatDate(),
+            },
+          ],
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const removeFormWishlist: UserAction = async (item) => {
+    try {
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          wishlist: token.userInfo.wishlist.filter((product) => product.id !== item.id),
+        },
+      })
+      // const res = await axios({
+      //   method: 'delete',
+      //   url: `/api/user/wishlist/${item.id}`,
+      //   headers: { authorization: token.encodedToken },
+      // })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const moveToCart: UserAction = async (item) => {
+    console.log('move to cart', item)
+    try {
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          wishlist: token.userInfo.wishlist.filter((product) => product.id !== item.id),
+          cart: [
+            ...token.userInfo.cart,
+            {
+              ...item,
+              createdAt: formatDate(),
+              updatedAt: formatDate(),
+              qty: 1,
+            },
+          ],
+        },
+      })
+    } catch (error) {}
+  }
+  const moveToWishlist: UserAction = async (item) => {
+    console.log('move to wishlist', item)
+    try {
+      setStoredValue({
+        encodedToken: token.encodedToken,
+        userInfo: {
+          ...token.userInfo,
+          cart: token.userInfo.cart.filter((product) => product.id !== item.id),
+          wishlist: [
+            ...token.userInfo.wishlist,
+            {
+              ...item,
+              createdAt: formatDate(),
+              updatedAt: formatDate(),
+            },
+          ],
+        },
+      })
+    } catch (error) {}
+  }
+
+  return {
+    user: token && token.userInfo,
+    login,
+    signUp,
+    logOut,
+    getCart,
+    addToCart,
+    removeFromCart,
+    addToWishlist,
+    removeFormWishlist,
+    moveToCart,
+    getWishlist,
+    moveToWishlist,
+    updateItemCount,
+  }
 }
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => {
+  const auth = useContext(AuthContext)
+  if (auth === undefined) {
+    throw new Error('useAuth must be used within a AuthProvider')
+  }
+  return auth
+}
 
 export default AuthProvider
